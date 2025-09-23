@@ -38,8 +38,6 @@ Rectangle {
     id: root
 
     FontLoader { id: ubuntuRegular; source: "assets/fonts/UbuntuNerdFont-Regular.ttf" }
-    FontLoader { id: ubuntuLight; source: "assets/fonts/UbuntuNerdFont-Light.ttf" }
-    FontLoader { id: ubuntuMedium; source: "assets/fonts/UbuntuNerdFont-Medium.ttf" }
     FontLoader { id: ubuntuBold; source: "assets/fonts/UbuntuNerdFont-Bold.ttf" }
 
     property string generalFontColor: "white"

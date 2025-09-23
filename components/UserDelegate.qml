@@ -92,7 +92,6 @@ Item {
         anchors.top: imageSource.bottom
         anchors.topMargin: usernameLabel.height / 1.2
         color: usernameFontColor
-        font.capitalization: Font.Capitalize
         font.pointSize: Math.max(16, usernameFontSize * 0.9)
         // Make an indication that this has active focus, this only happens when reached with keyboard navigation
         font.underline: wrapper.activeFocus

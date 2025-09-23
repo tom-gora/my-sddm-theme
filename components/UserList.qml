@@ -46,7 +46,7 @@ ListView {
         height: userItemHeight
         isCurrent: ListView.isCurrentItem
         name: {
-            var displayName = model.realName || model.name;
+            var displayName = model.name;
 
             if (model.vtNumber === undefined || model.vtNumber < 0) {
                 return displayName;
