@@ -60,7 +60,6 @@ Item {
         height: faceSize
         width: faceSize
 
-        // Image takes priority, taking a full path to a file, if that doesn't exist we show an icon
         Image {
             id: face
 
@@ -69,20 +68,16 @@ Item {
             smooth: true
             source: wrapper.avatarPath
             sourceSize: Qt.size(faceSize, faceSize)
-            visible: false
-        }
-        Image {
-            id: mask
+            visible: true
 
-            smooth: true
-            source: "../assets/mask.svgz"
-            sourceSize: Qt.size(faceSize, faceSize)
-        }
-        OpacityMask {
-            anchors.fill: face
-            cached: true
-            maskSource: mask
-            source: face
+            layer.enabled: true
+                layer.effect: OpacityMask {
+                    maskSource: Rectangle {
+                        width: face.width
+                        height: face.height
+                        radius: 4
+                    }
+                }
         }
     }
     Label {

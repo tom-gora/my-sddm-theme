@@ -35,14 +35,17 @@ FocusScope {
         focus: true
         smooth: true
     }
-    RecursiveBlur {
+
+    GaussianBlur {
         id: backgroundBlur
 
         anchors.fill: backgroundImage
-        loops: configBlur ? config.recursiveBlurLoops : 0
-        radius: configBlur ? config.recursiveBlurRadius : 0
         source: backgroundImage
+        deviation: configBlur ?  config.BlurRadius - 1 : 0
+        radius: configBlur ? config.BlurRadius : 0
+        samples: configBlur ? config.BlurRadius * 2 + 1 : 0
     }
+
     MouseArea {
         anchors.fill: parent
 

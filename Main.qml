@@ -37,10 +37,10 @@ Rectangle {
 
     id: root
 
-    FontLoader { id: ubuntuRegular; source: "assets/fonts/UbuntuNerdFont-Regular.ttf" }
-    FontLoader { id: ubuntuBold; source: "assets/fonts/UbuntuNerdFont-Bold.ttf" }
+    FontLoader { id: ubuntuRegular; source: "./assets/fonts/UbuntuNerdFont-Regular.ttf" }
+    FontLoader { id: ubuntuBold; source: "./assets/fonts/UbuntuNerdFont-Bold.ttf" }
 
-    property string generalFontColor: "white"
+    property string generalFontColor: "#d9d8d9"
     property int generalFontSize: config.FontPointSize ? parseInt(config.FontPointSize) : Math.max(1, root.height / 80)
     property string notificationMessage
 
@@ -55,13 +55,25 @@ Rectangle {
         model: screenModel
 
         Wallpaper {
-            height: geometry.height
-            imageSource: config.background
-            width: geometry.width
-            x: geometry.x
-            y: geometry.y
+          id: wallpaperBg
+
+          height: geometry.height
+          imageSource: config.background
+          width: geometry.width
+          x: geometry.x
+          y: geometry.y
         }
-    }
+      }
+
+     Rectangle {
+        id: contentPanel
+        color: "#111111"
+        opacity: 0.5
+        width: parent.width * 0.4
+        height: container.implicitHeight + 500
+        anchors.centerIn: parent
+      }
+
     ColumnLayout {
         id: container
 
@@ -71,6 +83,8 @@ Rectangle {
 
         RowLayout {
             id: header
+            property int refHeight: 40
+
 
             Layout.alignment: Qt.AlignCenter
             Layout.fillHeight: false
@@ -79,8 +93,8 @@ Rectangle {
 
             KeyboardLayoutButton {
                 Layout.topMargin: -1
-                implicitHeight: clockLabel.height * 1.2
-                implicitWidth: clockLabel.height * 1.8
+                implicitHeight: header.refHeight * 1.2
+                implicitWidth: header.refHeight * 1.8
             }
             Item {
                 id: clock
@@ -89,17 +103,14 @@ Rectangle {
                 Layout.alignment: Qt.AlignCenter
                 
                 Component.onCompleted: {
-                    updateDateTime();
+                    clock.updateDateTime();
                 }
                 
                 function updateDateTime() {
-                    // Get the current date/time once
                     let now = new Date();
                     
-                    // Update time - using 24-hour format with large font
                     timeLabel.text = now.toLocaleString(Qt.locale("en_US"), "hh:mm");
                     
-                    // Update date - full day name, day, month and year
                     dateLabel.text = now.toLocaleString(Qt.locale("en_US"), "dddd, dd MMMM yyyy");
                 }
                 
@@ -111,9 +122,12 @@ Rectangle {
                         id: timeLabel
                         anchors.horizontalCenter: parent.horizontalCenter
                         color: generalFontColor
-                        font.family: ubuntuRegular
                         font.pointSize: 150
-                        font.weight: Font.Regular 
+                        font {
+                            family: ubuntuRegular.name
+                            pointSize: 150
+                            weight: Font.Normal
+                        }
                         renderType: Text.QtRendering
                     }
                     
@@ -122,8 +136,11 @@ Rectangle {
                         anchors.horizontalCenter: parent.horizontalCenter
                         color: generalFontColor
                         font.pointSize: 26
-                        font.weight: bold
-                        font.family: ubuntuBold
+                       font {
+                            family: ubuntuBold.name
+                            pointSize: 26
+                            weight: Font.Bold
+                        }
                         renderType: Text.QtRendering
                     }
                 }
@@ -133,7 +150,7 @@ Rectangle {
                     repeat: true
                     running: true
                     onTriggered: {
-                        updateDateTime();
+                        clock.updateDateTime();
                     }
                 }
             }

@@ -10,7 +10,14 @@ and thea sphaugh's fork, fixing the theme to work in QT6
 [LINK](https://github.com/sphaugh/sddm-chili)  
 Tweaked to better line up its style with my simple lock screen
 
-Redistributing under the saame license.
+---
+
+Default background image attribution:
+[LINK](https://unsplash.com/photos/silhouette-of-mountains-under-blue-sky-Ha501MB_XE8)
+
+---
+
+Redistributing under the same license.
 Original credits retained as below:
 
 ---

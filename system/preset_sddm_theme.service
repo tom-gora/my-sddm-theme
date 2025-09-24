@@ -1,0 +1,20 @@
+[Unit]
+Description=Prepare SDDM theme with random picture and correct accent color
+Before=display-manager.service
+After=network.target
+
+DefaultDependencies=no
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c '/usr/share/sddm/themes/SquareDDM/system/preset_sddm_theme.sh tomeczku'
+RemainAfterExit=yes
+
+ProtectSystem=full
+ProtectHome=read-only
+ReadWritePaths=/usr/share/sddm/themes/SquareDDM/
+PrivateTmp=yes
+NoNewPrivileges=yes
+
+[Install]
+WantedBy=display-manager.service

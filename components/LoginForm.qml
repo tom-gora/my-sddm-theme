@@ -50,7 +50,7 @@ LoginFormLayout {
             color: "white"
             echoMode: TextInput.Password
             focus: true
-            font.pointSize: 24
+            font.pointSize: 36
             implicitHeight: usernameFontSize * 8
             implicitWidth: root.width / 4
             placeholderText: "󰌆 "
@@ -62,10 +62,10 @@ LoginFormLayout {
             bottomPadding: 16
 
             background: Rectangle {
-                border.color: "white"
+                border.color: "transparent"
                 border.width: 0
-                color: passwordFieldOutlined ? "transparent" : "#E0927C"
-                radius: 0
+                color: passwordFieldOutlined ? "transparent" : config.AccentColor
+                radius: 8
             }
 
             Keys.onEscapePressed: {
