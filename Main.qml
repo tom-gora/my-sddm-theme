@@ -67,8 +67,8 @@ Rectangle {
 
      Rectangle {
         id: contentPanel
-        color: "#111111"
-        opacity: 0.5
+        color: "#000000"
+        opacity: 0.4
         width: parent.width * 0.42
         height: container.implicitHeight + 500
         anchors.centerIn: parent
