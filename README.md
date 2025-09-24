@@ -1,7 +1,10 @@
 # MY SDDM THEME
 
-Screenshot:
+SDDM Login Screen:
 ![screenshot](./screenshot.png)
+
+Hyprlock as per my config. Screenshot for comparison:
+![hyrplock_screenshot](./hyprlock_screenshot.png)
 
 Modified SDDM Chili theme Based on original work of MarianArlt
 
